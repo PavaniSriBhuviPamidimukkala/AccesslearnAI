@@ -1,0 +1,52 @@
+/* Base custom styles that Tailwind might not cover easily */
+
+:root {
+    --transition-speed: 0.3s;
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Base link animations */
+a, button {
+    transition: all var(--transition-speed) ease-in-out;
+}
+
+/* Deaf mode visual indicators */
+.deaf-mode .visual-alert {
+    animation: flash 1s ease-in-out infinite alternate;
+}
+
+@keyframes flash {
+    0% { background-color: rgba(239, 68, 68, 0.1); border-color: rgb(239, 68, 68); }
+    100% { background-color: rgba(239, 68, 68, 0.3); border-color: rgb(220, 38, 38); }
+}
+
+/* Interactive element hover effects for standard mode */
+body:not(.blind-mode) .card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+}
+
+/* Glassmorphism utility */
+.glass {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+.dark .glass {
+    background: rgba(31, 41, 55, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Hide scrollbar for clean horizontal scrolls but allow functionality */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}

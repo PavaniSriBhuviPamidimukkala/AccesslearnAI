@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AccessLearn AI</title>
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind Configuration for Custom Colors/Fonts -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6D28D9', // Violet 700 (Distinct primary)
+                        secondary: '#F43F5E', // Rose 500 (Vibrant secondary)
+                        darkBg: '#0F172A', // Slate 900 (Deep, rich dark mode background)
+                        darkSurface: '#1E293B', // Slate 800
+                        lightBg: '#FAF5FF', // Purple 50 (Slightly tinted light background)
+                        highContrastBg: '#000000',
+                        highContrastText: '#FFFF00', // Yellow for high contrast Blind Mode
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            /* Deaf Mode Overrides: Larger fonts, distinct focus */
+            .deaf-mode body {
+                @apply text-lg;
+            }
+            .deaf-mode h1 {
+                @apply text-5xl;
+            }
+            .deaf-mode h2 {
+                @apply text-4xl;
+            }
+            .deaf-mode p {
+                @apply text-xl leading-relaxed;
+            }
+
+            /* Blind Mode Overrides: High contrast, thick focus rings */
+            .blind-mode body {
+                @apply bg-highContrastBg text-highContrastText;
+            }
+            .blind-mode * {
+                @apply border-highContrastText;
+            }
+            .blind-mode a, .blind-mode button {
+                @apply text-yellow-300 underline decoration-2;
+            }
+            .blind-mode *:focus {
+                @apply outline-none ring-4 ring-yellow-400 ring-offset-4 ring-offset-black;
+            }
+        }
+    </style>
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body class="bg-lightBg text-gray-900 font-sans transition-colors duration-300 antialiased min-h-screen flex flex-col">
+    <!-- Navigation Shell -->
+    <div id="nav-container"></div>
+
+    <!-- Main Content Shell -->
+    <main id="app-root" class="flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8" aria-live="polite">
+        <!-- Route views will be injected here -->
+    </main>
+
+    <!-- Global Accessible Toast Notifier (for Deaf Mode visual alerts & Blind route announcements) -->
+    <div id="toast-container" class="fixed bottom-4 right-4 z-50 flex flex-col gap-2" aria-live="assertive"
+        role="alert"></div>
+
+    <!-- Firebase SDKs (v8 legacy namespaced for vanilla compat) -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+    <!-- App Entry Point dependencies -->
+    <script src="js/firebase-config.js"></script>
+    <script src="js/store.js"></script>
+    <script src="js/router.js"></script>
+    <script src="js/accessibility.js"></script>
+    <script src="js/pages/auth.js"></script>
+    <script src="js/pages/dashboard.js"></script>
+    <script src="js/pages/courses.js"></script>
+    <script src="js/pages/quiz.js"></script>
+    <script src="js/pages/video.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
