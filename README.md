@@ -1,42 +1,80 @@
-AccessLearn AI
-​The Inclusive, AI-Powered Learning Management System
-​AccessLearn AI is a specialized learning management system designed with a deep accessibility philosophy. It provides an inclusive environment specifically for users with visual and hearing impairments, using a lightweight Vanilla JS architecture and AI-driven study tools.
-​Key Features
-​Advanced Accessibility System
-​Managed via a centralized global state, the platform adapts instantly to user needs:
-​Deaf Mode: Forces subtitle overlays on all video content, replaces audio cues with visual alerts, and enhances interactive states with high-visibility borders.
-​Blind / High Contrast Mode: Switches to a specialized Yellow-on-Black theme for maximum readability. A custom AccessibilityEngine using the Web Speech API narrates page content and navigation changes.
-​ARIA-First Design: Strict enforcement of ARIA roles across all components for seamless screen reader compatibility.
-​AI-Integrated Learning
-​AI Doubt Solver: A built-in chat panel that acts as a tutor by scanning transcripts to answer contextual questions in real-time.
-​Automated Notes: Generates structured, AI-summarized notes based on video content for efficient revision.
-​Interactive Transcripts: Searchable, timestamped sidebars that highlight as the video progresses.
-​Smart Content Delivery
-​Hybrid Video Player: Automatically detects and renders both direct MP4 files and YouTube embeds.
-​Auto-Seeding: Ensures the Firestore database is populated by generating boilerplate courses on the first launch.
-​Technology Stack
-​Frontend: Vanilla JavaScript (ES6+), HTML5
-​Styling: Tailwind CSS
-​Icons: Lucide Icons
-​Backend: Firebase Authentication
-​Database: Cloud Firestore (NoSQL)
-​Routing: Custom Vanilla JS Hash Router
-​Project Architecture
-​The project follows a modular SPA architecture to maintain performance for assistive tools.
-​index.html: Main shell and Tailwind configuration.
-​js/store.js: Global state management for Auth and Accessibility modes.
-​js/accessibility-engine.js: Logic for Web Speech API and Text-to-Speech.
-​js/pages/video.js: Video UI and AI Assistant integration.
-​Database Schema (Firestore: courses)
-​title (String): Name of the course
-​category (String): e.g., Frontend, Design
-​level (String): Beginner, Intermediate, or Advanced
-​video_url (String): Firebase Storage or YouTube Link
-​duration (String): e.g., 4h 30m
-​Setup and Installation
-​Clone the Repository:
-git clone https://github.com/your-username/accesslearn-ai.git
-​Firebase Configuration:
-Create a project in the Firebase Console, enable Authentication and Firestore, and add your config to js/firebase-config.js.
-​Launch:
-Open index.html via a local server like VS Code Live Server.
+================================================================================
+                                ACCESSLEARN AI
+                  Project Documentation & Technical Profile
+================================================================================
+
+1. LIVE DEMO
+--------------------------------------------------------------------------------
+Deploy Link: https://69a07d60033ec05ed571f58b--thunderous-chebakia-3f9efa.netlify.app/
+
+
+2. INTRODUCTION
+--------------------------------------------------------------------------------
+AccessLearn AI is a specialized, accessibility-first Learning Management System 
+(LMS) engineered to provide a barrier-free, inclusive educational experience. 
+Architected specifically for users with visual and hearing impairments, the 
+application breaks away from bloated frameworks, utilizing a lightweight, 
+hyper-performant Vanilla JavaScript Single Page Application (SPA) design. It 
+pairs semantic HTML5 structures with real-time AI study enhancements to deliver 
+optimized learning to every student.
+
+
+3. KEY FEATURES
+--------------------------------------------------------------------------------
+[A] Advanced Accessibility System
+Driven by a centralized global state engine, the platform instantly mutates its 
+configuration to serve specific user needs without requiring page reloads:
+
+  * Deaf Mode: 
+    Automatically forces subtitle overlays across all video playbacks, strips 
+    out critical audible alerts in favor of visual screen flashes/banners, and 
+    implements high-visibility focus indicator rings around interactive 
+    elements.
+
+  * Blind / High Contrast Mode: 
+    Instantly drops standard palettes for a high-contrast Yellow-on-Black 
+    readability theme. A custom automated script tracks user focus, routing 
+    text boundaries directly into the Web Speech API (speechSynthesis) to act 
+    as an on-the-fly screen reader.
+
+  * ARIA-First Design: 
+    Native enforcement of ARIA attributes, semantic landmarks, roles, and 
+    logical tab indexing guarantees clean accessibility compatibility with 
+    traditional hardware screen readers.
+
+[B] AI-Integrated Learning
+  * AI Doubt Solver: 
+    An on-screen panel hosting an artificial intelligence tutor. It processes 
+    video transcripts synchronously to answer context-aware questions during 
+    the lecture.
+
+  * Automated Notes: 
+    Condenses audio and transcript timelines into clean, bulleted summaries to 
+    provide rapid post-lecture revision resources.
+
+  * Interactive Transcripts: 
+    A side-panel text layout mapping time markers directly to the media stream, 
+    highlighting lines sequentially as the playback engine advances.
+
+[C] Smart Content Delivery
+  * Hybrid Video Player: 
+    A wrapper logic layer parsing inputs to seamlessly render raw cloud-hosted 
+    MP4 links or cross-origin YouTube video embeds inside a standardized user 
+    interface.
+
+  * Auto-Seeding Engine: 
+    A runtime database initialization flag that intercepts execution on the 
+    first launch. If Firestore returns empty collections, it programmatically 
+    provisions standard course boilerplate entries.
+
+
+4. TECHNOLOGY STACK
+--------------------------------------------------------------------------------
+  * Frontend Framework : Vanilla JavaScript (ES6+ Module Architecture)
+  * Styling Engine     : Tailwind CSS
+  * Iconography        : Lucide Icons
+  * Authentication     : Firebase Authentication
+  * Database Management: Cloud Firestore (NoSQL Document Store)
+  * Routing Strategy   : Custom Client-Side Hash Router (window.location.hash)
+
+================================================================================
